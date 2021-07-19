@@ -24,7 +24,7 @@ struct ContentView: View {
                 HStack{
                     Spacer()
                     VStack{
-                        NavigationLink(destination: SettingView(isFlat: $conductor.isFlat, timerInterval: $conductor.timerInterval, navBarHidden: $navBarHidden, isAdHidden: $conductor.isAdHidden)){
+                        NavigationLink(destination: SettingView(isFlat: $conductor.userData.isFlat, timerInterval: $conductor.userData.timerInterval, navBarHidden: $navBarHidden, isAdHidden: $conductor.isAdHidden)){
                             Image("setting")
                                 .renderingMode(.template)
                                 .resizable()
@@ -51,12 +51,12 @@ struct ContentView: View {
                     ZStack{
                         HStack{
                             VStack{
-                                Slider(value: $conductor.slider, in: 0...100, step: 1)
+                                Slider(value: $conductor.userData.slider, in: 0...100, step: 1)
                                     .accentColor(Color(hex: "D06969"))
                                     .frame(width: 200)
                                 HStack{
                                     Spacer()
-                                    Text("マイク感度: \(Int(100-conductor.slider), specifier: "%3d")%")
+                                    Text("マイク感度: \(Int(100-conductor.userData.slider), specifier: "%3d")%")
                                         .font(.custom("komorebi-gothic", size: 10))
                                         .foregroundColor(Color(hex: "D9D9D9"))
                                         .rotationEffect(.degrees(-180.0), anchor: .center)
@@ -91,7 +91,7 @@ struct ContentView: View {
                         }
                     }
                     .padding(.top)
-                    ChartView(freq: conductor.frequency, reload: conductor.reload, isFlat: conductor.isFlat)
+                    ChartView(freq: conductor.frequency, reload: conductor.reload, isFlat: conductor.userData.isFlat)
                         .padding(.top)
                     if !conductor.isAdHidden {
                         if UIDevice.current.userInterfaceIdiom == .pad {
