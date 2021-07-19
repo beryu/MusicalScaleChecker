@@ -29,10 +29,9 @@ class TunerViewModel: ObservableObject {
     
     @Published var timer : Timer!
     @Published var reload:Bool = false
-    @Published var userData: UserDataModel {
+    @Published var userData = UserDataModel() {
         didSet {
             changeSharpFlat()
-            saveUserData()
         }
     }
     
@@ -58,13 +57,7 @@ class TunerViewModel: ObservableObject {
             scaleNames = ["ド", "ド#", "レ", "レ#", "ミ", "ファ", "ファ#", "ソ", "ソ#", "ラ", "ラ#", "シ"]
         }
     }
-    
-    func saveUserData() {
-        if let encodedData = try? JSONEncoder().encode(userData) {
-            UserDefaults.standard.set(encodedData, forKey: "userData")
-        }
-    }
-    
+
     func update(_ frequency: Float, _ amp: Float) {
         var frequency_calc = frequency
         if maxSense * userData.slider/100.0 < amp && frequency_calc < 20000{
@@ -132,13 +125,6 @@ class TunerViewModel: ObservableObject {
     }
 
     init() {
-        UserDefaults.standard.register(defaults: ["isFlat" : false, "slider" : 0, "timer" : 0.005])
-        let isFlat = UserDefaults.standard.bool(forKey: "isFlat")
-        let slider = UserDefaults.standard.float(forKey: "slider")
-        let timerInterval = UserDefaults.standard.float(forKey: "timer")
-        
-        self.userData = UserDataModel(isFlat: isFlat, slider: slider, timerInterval: timerInterval)
-        
         mic = engine.input
         silence = Fader(mic, gain: 0)
         engine.output = silence
