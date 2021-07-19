@@ -24,7 +24,7 @@ struct ContentView: View {
                 HStack{
                     Spacer()
                     VStack{
-                        NavigationLink(destination: SettingView(isFlat: $conductor.userData.isFlat, timerInterval: $conductor.userData.timerInterval, navBarHidden: $navBarHidden, isAdHidden: $conductor.isAdHidden)){
+                        NavigationLink(destination: SettingView(userData: $conductor.userData, navBarHidden: $navBarHidden, isAdHidden: $conductor.isAdHidden)){
                             Image("setting")
                                 .renderingMode(.template)
                                 .resizable()

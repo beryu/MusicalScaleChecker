@@ -32,6 +32,10 @@ class TunerViewModel: ObservableObject {
     @Published var userData = UserDataModel() {
         didSet {
             changeSharpFlat()
+            if !isStopped {
+                /// timerIntervalが変更された場合、リスタートして表示間隔を更新する
+                start()
+            }
         }
     }
     
