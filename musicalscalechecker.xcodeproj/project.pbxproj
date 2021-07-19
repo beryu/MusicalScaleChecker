@@ -60,6 +60,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8715421E26A5EA8400543F8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8778D49D2542F4FB00E92BDC /* AppDelegate.swift */,
+				8778D49F2542F4FB00E92BDC /* SceneDelegate.swift */,
+				8778D4D22542FF0200E92BDC /* AdView.swift */,
+				8778D4C32542F65600E92BDC /* ColorEx.swift */,
+				8778D4C02542F64600E92BDC /* ChartView.swift */,
+				87939D6D256D634300E99458 /* SettingView.swift */,
+				8778D4A12542F4FB00E92BDC /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8715421F26A5EA9100543F8A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8715422026A5EA9900543F8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8778D4912542F4FB00E92BDC = {
 			isa = PBXGroup;
 			children = (
@@ -82,14 +110,10 @@
 		8778D49C2542F4FB00E92BDC /* musicalscalechecker */ = {
 			isa = PBXGroup;
 			children = (
+				8715422026A5EA9900543F8A /* Model */,
+				8715421E26A5EA8400543F8A /* View */,
+				8715421F26A5EA9100543F8A /* ViewModel */,
 				870CB6B6254319E400E84DD4 /* Settings.bundle */,
-				8778D49D2542F4FB00E92BDC /* AppDelegate.swift */,
-				8778D49F2542F4FB00E92BDC /* SceneDelegate.swift */,
-				8778D4A12542F4FB00E92BDC /* ContentView.swift */,
-				87939D6D256D634300E99458 /* SettingView.swift */,
-				8778D4C02542F64600E92BDC /* ChartView.swift */,
-				8778D4C32542F65600E92BDC /* ColorEx.swift */,
-				8778D4D22542FF0200E92BDC /* AdView.swift */,
 				8778D4BF2542F63500E92BDC /* komorebi-gothic.ttf */,
 				8778D4A32542F4FD00E92BDC /* Assets.xcassets */,
 				8758A145269DC9F600EFECF6 /* Info.plist */,
