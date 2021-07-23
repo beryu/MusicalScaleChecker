@@ -24,7 +24,7 @@ struct ContentView: View {
                 HStack{
                     Spacer()
                     VStack{
-                        NavigationLink(destination: SettingView(userData: $conductor.userData, navBarHidden: $navBarHidden, isAdHidden: $conductor.isAdHidden)){
+                        NavigationLink(destination: SettingView(userData: $conductor.userData, navBarHidden: $navBarHidden)){
                             Image("setting")
                                 .renderingMode(.template)
                                 .resizable()
@@ -32,18 +32,6 @@ struct ContentView: View {
                                 .foregroundColor(Color.gray)
                                 .padding()
                         }
-                        /*
-                        if !conductor.isAdHidden {
-                            NavigationLink(destination: SettingView(isFlat: $conductor.isFlat, timerInterval: $conductor.timerInterval, navBarHidden: $navBarHidden, rewarded: $conductor.rewarded, isAdHidden: $conductor.isAdHidden)){
-                                Image("NoAd")
-                                    .renderingMode(.template)
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .foregroundColor(Color.gray)
-                                    .padding()
-                            }
-                        }
-                        */
                         Spacer()
                     }
                 }
@@ -93,14 +81,12 @@ struct ContentView: View {
                     .padding(.top)
                     ChartView(freq: conductor.sound.frequency, reload: conductor.reload, isFlat: conductor.userData.isFlat)
                         .padding(.top)
-                    if !conductor.isAdHidden {
-                        if UIDevice.current.userInterfaceIdiom == .pad {
-                            AdView()
-                                .frame(height: 90)
-                        }else{
-                            AdView()
-                                .frame(height: 60)
-                        }
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        AdView()
+                            .frame(height: 90)
+                    }else{
+                        AdView()
+                            .frame(height: 60)
                     }
                 }
             }

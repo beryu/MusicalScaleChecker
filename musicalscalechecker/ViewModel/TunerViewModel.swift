@@ -39,9 +39,6 @@ class TunerViewModel: ObservableObject {
             }
         }
     }
-    
-    //@Published var rewarded:GADRewardedAd
-    @Published var isAdHidden: Bool
 
     func update(_ frequency: Float, _ amp: Float) {
         var frequency_calc = frequency
@@ -113,33 +110,6 @@ class TunerViewModel: ObservableObject {
         mic = engine.input
         silence = Fader(mic, gain: 0)
         engine.output = silence
-        
-        if let date:Date = UserDefaults.standard.object(forKey: "date") as? Date {
-            if let elapsedDays = Calendar.current.dateComponents([.day], from: date, to: Date()).day {
-                print(elapsedDays)
-                if(elapsedDays <= 5){
-                    isAdHidden = true
-                }else{
-                    isAdHidden = false
-                }
-            }else{
-                isAdHidden = false
-            }
-        }else{
-            isAdHidden = false
-        }
-
-        /*
-        rewarded = GADRewardedAd(adUnitID: "ca-app-pub-7957268411742512/9338028308")
-        //rewarded = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313") //テスト
-        rewarded.load(GADRequest()) { error in
-          if let error = error {
-            print("Loading failed init: \(error)")
-          } else {
-            print("Loading Succeeded")
-          }
-        }
-        */
         
         tracker = PitchTap(mic) { pitch, amp in
             DispatchQueue.main.async {

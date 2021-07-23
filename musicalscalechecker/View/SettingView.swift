@@ -11,16 +11,11 @@ import GoogleMobileAds
 struct SettingView: View {
     @Binding var userData: UserDataModel
     
-    //@Binding var rewarded: GADRewardedAd
-    
     @Binding var navBarHidden:Bool
     
-    @Binding var isAdHidden:Bool
-    
-    init(userData: Binding<UserDataModel>, navBarHidden: Binding<Bool>, isAdHidden: Binding<Bool>){
+    init(userData: Binding<UserDataModel>, navBarHidden: Binding<Bool>){
         self._userData = userData
         self._navBarHidden = navBarHidden
-        self._isAdHidden = isAdHidden
         
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         UINavigationBar.appearance().shadowImage = UIImage()
@@ -45,14 +40,12 @@ struct SettingView: View {
                     Text("遅")
                 }
             }
-            if !isAdHidden {
-                Section{
-                    Rectangle()
-                        .frame(height: 250)
-                        .foregroundColor(.clear)
-                        .background(AdRectView()
-                                        .frame(height: 250))
-                }
+            Section{
+                Rectangle()
+                    .frame(height: 250)
+                    .foregroundColor(.clear)
+                    .background(AdRectView()
+                                    .frame(height: 250))
             }
         }
         .onAppear(){
