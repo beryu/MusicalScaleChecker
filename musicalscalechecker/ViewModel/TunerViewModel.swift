@@ -63,7 +63,7 @@ class TunerViewModel: ObservableObject {
             var index: Int = 0
 
             for i in 0..<sound.noteFrequencies.count {
-                let distance: Float = fabsf(Float(sound.noteFrequencies[i]) - frequencyCalc)   //各音程までの距離の絶対値
+                let distance: Float = fabsf(Float(sound.noteFrequencies[i]) - frequencyCalc) /// 各音程までの距離の絶対値
                 if distance < minDistance { /// 一番小さい距離のものを記憶
                     index = i
                     minDistance = distance
