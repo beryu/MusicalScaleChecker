@@ -84,7 +84,7 @@ struct ContentView: View {
                     if UIDevice.current.userInterfaceIdiom == .pad {
                         AdView()
                             .frame(height: 90)
-                    }else{
+                    } else {
                         AdView()
                             .frame(height: 60)
                     }
