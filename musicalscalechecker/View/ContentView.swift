@@ -90,21 +90,21 @@ struct ContentView: View {
                     }
                 }
             }
-            .onTapGesture() {
+            .onTapGesture {
                 tunerView.isStopped.toggle()
             }
-            .onAppear() {
+            .onAppear {
                 tunerView.start()
                 navBarHidden = true
                 /// n回に1回レビューを促す
-                UserDefaults.standard.register(defaults: ["slider" : 0.0, "count" : 1])
-                let count:Int = UserDefaults.standard.integer(forKey: "count")
+                UserDefaults.standard.register(defaults: ["slider": 0.0, "count": 1])
+                let count: Int = UserDefaults.standard.integer(forKey: "count")
                 UserDefaults.standard.setValue(count+1, forKey: "count")
                 if count%15 == 0 {
                     SKStoreReviewController.requestReview()
                 }
             }
-            .onDisappear() {
+            .onDisappear {
                 tunerView.stop()
             }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in

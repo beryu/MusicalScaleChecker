@@ -16,9 +16,9 @@ class TunerViewModel: ObservableObject {
     
     @Published var sound = SoundModel()
     
-    let maxSense:Float = 1.0
+    let maxSense: Float = 1.0
     
-    @Published var timer : Timer!
+    @Published var timer: Timer!
     @Published var reload: Bool = false
     @Published var userData = UserDataModel() {
         didSet {
@@ -30,7 +30,7 @@ class TunerViewModel: ObservableObject {
         }
     }
     
-    @Published var isStopped:Bool = false {
+    @Published var isStopped: Bool = false {
         didSet {
             if isStopped {
                 stop()
@@ -41,55 +41,55 @@ class TunerViewModel: ObservableObject {
     }
 
     func update(_ frequency: Float, _ amp: Float) {
-        var frequency_calc = frequency
-        if maxSense * userData.slider/100.0 < amp && frequency_calc < 20000{
+        var frequencyCalc = frequency
+        if maxSense * userData.slider/100.0 < amp && frequencyCalc < 20000 {
             sound.frequency = frequency
-            while frequency_calc > Float(sound.noteFrequencies[sound.noteFrequencies.count - 1]) {   //noteFrequenciesの値までオクターブを下げていく
-                frequency_calc /= 2.0
+            while frequencyCalc > Float(sound.noteFrequencies[sound.noteFrequencies.count - 1]) {   /// noteFrequenciesの値までオクターブを下げていく
+                frequencyCalc /= 2.0
             }
-            while frequency_calc < Float(sound.noteFrequencies[0]) {   //noteFrequenciesの値までオクターブを上げる
-                frequency_calc *= 2.0
+            while frequencyCalc < Float(sound.noteFrequencies[0]) {   /// noteFrequenciesの値までオクターブを上げる
+                frequencyCalc *= 2.0
             }
             /* ドとレを行き来する問題
              　ドの方が近ければ/2する
             */
-            if(frequency_calc > Float(sound.noteFrequencies[sound.noteFrequencies.count - 1])) {
-                if(fabsf(Float(sound.noteFrequencies[sound.noteFrequencies.count - 1]) - frequency_calc) > fabsf(Float(sound.noteFrequencies[0]) - frequency/2.0)){
-                    frequency_calc /= 2.0
+            if frequencyCalc > Float(sound.noteFrequencies[sound.noteFrequencies.count - 1]) {
+                if fabsf(Float(sound.noteFrequencies[sound.noteFrequencies.count - 1]) - frequencyCalc) > fabsf(Float(sound.noteFrequencies[0]) - frequency/2.0) {
+                    frequencyCalc /= 2.0
                 }
             }
 
-            var minDistance: Float = 10_000.0   //間の距離
-            var index:Int = 0
+            var minDistance: Float = 10_000.0   /// 間の距離
+            var index: Int = 0
 
             for i in 0..<sound.noteFrequencies.count {
-                let distance:Float = fabsf(Float(sound.noteFrequencies[i]) - frequency_calc)   //各音程までの距離の絶対値
-                if distance < minDistance { //一番小さい距離のものを記憶
+                let distance: Float = fabsf(Float(sound.noteFrequencies[i]) - frequencyCalc)   //各音程までの距離の絶対値
+                if distance < minDistance { /// 一番小さい距離のものを記憶
                     index = i
                     minDistance = distance
                 }
             }
             
-            let octave:Int = Int(log2f(frequency / frequency_calc))
+            let octave: Int = Int(log2f(frequency / frequencyCalc))
             
-            //low,mid,hiに対応(A基準のオクターブにする
-            var octaveJa:Int = octave
-            if(index < 9){
-                octaveJa = octave-1 //Aより小さければ1つ下のオクターブとする
+            /// low,mid,hiに対応(A基準のオクターブにする
+            var octaveJa: Int = octave
+            if index < 9 {
+                octaveJa = octave-1 /// Aより小さければ1つ下のオクターブとする
             }
 
             var prefix: String = ""
-            if(octaveJa < 2) {
-                //1以下のオクターブでlow
+            if octaveJa < 2 {
+                /// 1以下のオクターブでlow
                 for _ in 0...octaveJa.distance(to: 1) {
-                    prefix = prefix + "low" //1からの距離の回数lowをつける
+                    prefix += "low" /// 1からの距離の回数lowをつける
                 }
-            }else if(octaveJa < 4){
-                //3以下のオクターブでmid
-                prefix = "mid" + (octaveJa-1).description   //2,3のオクターブの時、-1するだけで良い
-            }else{
-                for _ in 0...octaveJa-4{
-                    prefix = prefix + "hi"
+            } else if octaveJa < 4 {
+                /// 3以下のオクターブでmid
+                prefix = "mid" + (octaveJa-1).description   /// 2,3のオクターブの時、-1するだけで良い
+            } else {
+                for _ in 0...octaveJa-4 {
+                    prefix += "hi"
                 }
             }
             
@@ -113,7 +113,7 @@ class TunerViewModel: ObservableObject {
         
         tracker = PitchTap(mic) { pitch, amp in
             DispatchQueue.main.async {
-                if(!self.isStopped){
+                if !self.isStopped {
                     self.update(pitch[0], amp[0])
                 }
             }
@@ -132,11 +132,11 @@ class TunerViewModel: ObservableObject {
         
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(userData.timerInterval), repeats: true) {_ in
-            if(!self.isStopped) {
+            if !self.isStopped {
                 self.reload.toggle()
             }
        }
-        //2回しないと起動しない
+        /// 2回しないと起動しない
         do {
             try engine.start()
         } catch let err {

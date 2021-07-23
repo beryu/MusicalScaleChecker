@@ -47,10 +47,10 @@ struct SettingView: View {
                                     .frame(height: 250))
             }
         }
-        .onAppear() {
+        .onAppear {
             navBarHidden = false
         }
-        .onDisappear() {
+        .onDisappear {
             navBarHidden = true
         }
     }

@@ -20,7 +20,6 @@ extension Color {
        let g = (rgbValue & 0xff00) >> 8
        let b = rgbValue & 0xff
 
-
        self.init(red: Double(r) / 0xff, green: Double(g) / 0xff, blue: Double(b) / 0xff)
 
    }
@@ -63,4 +62,3 @@ extension UIColor {
         return img!
     }
 }
-
