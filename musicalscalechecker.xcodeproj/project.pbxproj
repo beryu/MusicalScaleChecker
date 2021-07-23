@@ -100,7 +100,6 @@
 		8778D4912542F4FB00E92BDC = {
 			isa = PBXGroup;
 			children = (
-				8778D4CB2542F68500E92BDC /* InfoPlist.strings */,
 				8778D49C2542F4FB00E92BDC /* musicalscalechecker */,
 				8778D49B2542F4FB00E92BDC /* Products */,
 				C6ECDCC516098E9341C98BFF /* Pods */,
@@ -119,6 +118,7 @@
 		8778D49C2542F4FB00E92BDC /* musicalscalechecker */ = {
 			isa = PBXGroup;
 			children = (
+				8778D4CB2542F68500E92BDC /* InfoPlist.strings */,
 				8715422026A5EA9900543F8A /* Model */,
 				8715421E26A5EA8400543F8A /* View */,
 				8715421F26A5EA9100543F8A /* ViewModel */,
