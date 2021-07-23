@@ -175,15 +175,6 @@ class YLeftAxisValueFormatter: IAxisValueFormatter {
             }
         }
         let freq:String = String(format: "%4d", Int(value))
-        /*
-        let note = noteNames[index] + octave.description
-        let freq:String = String(format: "%4d", Int(tracker.frequency))
-        
-        scaleText.text = scaleNames[index]
-        noteJaText.text = prefix + noteNames[index]
-        noteText.text = note
-        freqText.text = freq + "Hz"
-         */
         return prefix + noteNames[index]
     }
 }
@@ -250,15 +241,6 @@ class YRightAxisValueFormatter: IAxisValueFormatter {
             }
         }
         let freq:String = String(format: "%4d", Int(value))
-        /*
-        let note = noteNames[index] + octave.description
-        let freq:String = String(format: "%4d", Int(tracker.frequency))
-        
-        scaleText.text = scaleNames[index]
-        noteJaText.text = prefix + noteNames[index]
-        noteText.text = note
-        freqText.text = freq + "Hz"
-         */
         return freq + "Hz"
     }
 }
