@@ -157,7 +157,7 @@ class TunerViewModel: ObservableObject {
             try engine.start()
             tracker.start()
         } catch let err {
-            //Log(err)
+            Log(err)
         }
         
         self.timer?.invalidate()
@@ -170,7 +170,7 @@ class TunerViewModel: ObservableObject {
         do {
             try engine.start()
         } catch let err {
-            //Log(err)
+            Log(err)
         }
         print("start")
     }
