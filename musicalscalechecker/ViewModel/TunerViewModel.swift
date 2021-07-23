@@ -19,7 +19,7 @@ class TunerViewModel: ObservableObject {
     let maxSense:Float = 1.0
     
     @Published var timer : Timer!
-    @Published var reload:Bool = false
+    @Published var reload: Bool = false
     @Published var userData = UserDataModel() {
         didSet {
             sound.changeSharpFlat(isFlat: userData.isFlat)
@@ -31,10 +31,10 @@ class TunerViewModel: ObservableObject {
     }
     
     @Published var isStopped:Bool = false {
-        didSet{
+        didSet {
             if isStopped {
                 stop()
-            }else{
+            } else {
                 start()
             }
         }
@@ -53,7 +53,7 @@ class TunerViewModel: ObservableObject {
             /* ドとレを行き来する問題
              　ドの方が近ければ/2する
             */
-            if(frequency_calc > Float(sound.noteFrequencies[sound.noteFrequencies.count - 1])){
+            if(frequency_calc > Float(sound.noteFrequencies[sound.noteFrequencies.count - 1])) {
                 if(fabsf(Float(sound.noteFrequencies[sound.noteFrequencies.count - 1]) - frequency_calc) > fabsf(Float(sound.noteFrequencies[0]) - frequency/2.0)){
                     frequency_calc /= 2.0
                 }
@@ -78,10 +78,10 @@ class TunerViewModel: ObservableObject {
                 octaveJa = octave-1 //Aより小さければ1つ下のオクターブとする
             }
 
-            var prefix:String = ""
-            if(octaveJa < 2){
+            var prefix: String = ""
+            if(octaveJa < 2) {
                 //1以下のオクターブでlow
-                for _ in 0...octaveJa.distance(to: 1){
+                for _ in 0...octaveJa.distance(to: 1) {
                     prefix = prefix + "low" //1からの距離の回数lowをつける
                 }
             }else if(octaveJa < 4){
@@ -132,7 +132,7 @@ class TunerViewModel: ObservableObject {
         
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(userData.timerInterval), repeats: true) {_ in
-            if(!self.isStopped){
+            if(!self.isStopped) {
                 self.reload.toggle()
             }
        }

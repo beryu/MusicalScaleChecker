@@ -11,36 +11,35 @@ import GoogleMobileAds
 struct SettingView: View {
     @Binding var userData: UserDataModel
     
-    @Binding var navBarHidden:Bool
+    @Binding var navBarHidden: Bool
     
-    init(userData: Binding<UserDataModel>, navBarHidden: Binding<Bool>){
+    init(userData: Binding<UserDataModel>, navBarHidden: Binding<Bool>) {
         self._userData = userData
         self._navBarHidden = navBarHidden
         
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().isTranslucent = true
-        //UINavigationBar.appearance().tintColor = .clear
         UINavigationBar.appearance().backgroundColor = .clear
     }
     
     var body: some View {
-        Form{
-            Section(header: Text("表記")){
+        Form {
+            Section(header: Text("表記")) {
                 Toggle(isOn: $userData.isFlat,
                        label: {
                         Text("♭(フラット)表記")
                        })
             }
-            Section(header: Text("グラフの表示速度")){
-                HStack{
+            Section(header: Text("グラフの表示速度")) {
+                HStack {
                     Text("速")
                     Slider(value: $userData.timerInterval,
                         in: 0.001...0.1)
                     Text("遅")
                 }
             }
-            Section{
+            Section {
                 Rectangle()
                     .frame(height: 250)
                     .foregroundColor(.clear)
@@ -48,10 +47,10 @@ struct SettingView: View {
                                     .frame(height: 250))
             }
         }
-        .onAppear(){
+        .onAppear() {
             navBarHidden = false
         }
-        .onDisappear(){
+        .onDisappear() {
             navBarHidden = true
         }
     }
