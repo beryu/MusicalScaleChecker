@@ -9,8 +9,7 @@ import SwiftUI
 import GoogleMobileAds
 
 struct SettingView: View {
-    @Binding var isFlat:Bool
-    @Binding var timerInterval: Float
+    @Binding var userData: UserDataModel
     
     //@Binding var rewarded: GADRewardedAd
     
@@ -18,10 +17,8 @@ struct SettingView: View {
     
     @Binding var isAdHidden:Bool
     
-    init(isFlat: Binding<Bool>, timerInterval: Binding<Float>, navBarHidden: Binding<Bool>, isAdHidden: Binding<Bool>){
-        self._isFlat = isFlat
-        //self._rewarded = rewarded
-        self._timerInterval = timerInterval
+    init(userData: Binding<UserDataModel>, navBarHidden: Binding<Bool>, isAdHidden: Binding<Bool>){
+        self._userData = userData
         self._navBarHidden = navBarHidden
         self._isAdHidden = isAdHidden
         
@@ -35,7 +32,7 @@ struct SettingView: View {
     var body: some View {
         Form{
             Section(header: Text("表記")){
-                Toggle(isOn: $isFlat,
+                Toggle(isOn: $userData.isFlat,
                        label: {
                         Text("♭(フラット)表記")
                        })
@@ -43,7 +40,7 @@ struct SettingView: View {
             Section(header: Text("グラフの表示速度")){
                 HStack{
                     Text("速")
-                    Slider(value: $timerInterval,
+                    Slider(value: $userData.timerInterval,
                         in: 0.001...0.1)
                     Text("遅")
                 }

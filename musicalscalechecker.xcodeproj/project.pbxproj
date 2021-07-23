@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		870ACC7026AA9A240065A532 /* SoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870ACC6F26AA9A240065A532 /* SoundModel.swift */; };
 		870CB6B7254319E400E84DD4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 870CB6B6254319E400E84DD4 /* Settings.bundle */; };
+		8715422226A5ECD400543F8A /* TunerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715422126A5ECD400543F8A /* TunerViewModel.swift */; };
+		8715422426A5F02800543F8A /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715422326A5F02800543F8A /* UserDataModel.swift */; };
 		8778D49E2542F4FB00E92BDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778D49D2542F4FB00E92BDC /* AppDelegate.swift */; };
 		8778D4A02542F4FB00E92BDC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778D49F2542F4FB00E92BDC /* SceneDelegate.swift */; };
 		8778D4A22542F4FB00E92BDC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778D4A12542F4FB00E92BDC /* ContentView.swift */; };
@@ -26,7 +29,10 @@
 
 /* Begin PBXFileReference section */
 		127CB2329A5405303F12FE43 /* Pods-musicalscalechecker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-musicalscalechecker.release.xcconfig"; path = "Target Support Files/Pods-musicalscalechecker/Pods-musicalscalechecker.release.xcconfig"; sourceTree = "<group>"; };
+		870ACC6F26AA9A240065A532 /* SoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundModel.swift; sourceTree = "<group>"; };
 		870CB6B6254319E400E84DD4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		8715422126A5ECD400543F8A /* TunerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerViewModel.swift; sourceTree = "<group>"; };
+		8715422326A5F02800543F8A /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		8758A145269DC9F600EFECF6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8778D49A2542F4FB00E92BDC /* musicalscalechecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = musicalscalechecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8778D49D2542F4FB00E92BDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,10 +66,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8715421E26A5EA8400543F8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8778D4D22542FF0200E92BDC /* AdView.swift */,
+				8778D4C02542F64600E92BDC /* ChartView.swift */,
+				87939D6D256D634300E99458 /* SettingView.swift */,
+				8778D4A12542F4FB00E92BDC /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8715421F26A5EA9100543F8A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8778D49D2542F4FB00E92BDC /* AppDelegate.swift */,
+				8778D49F2542F4FB00E92BDC /* SceneDelegate.swift */,
+				8778D4C32542F65600E92BDC /* ColorEx.swift */,
+				8715422126A5ECD400543F8A /* TunerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8715422026A5EA9900543F8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8715422326A5F02800543F8A /* UserDataModel.swift */,
+				870ACC6F26AA9A240065A532 /* SoundModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8778D4912542F4FB00E92BDC = {
 			isa = PBXGroup;
 			children = (
-				8778D4CB2542F68500E92BDC /* InfoPlist.strings */,
 				8778D49C2542F4FB00E92BDC /* musicalscalechecker */,
 				8778D49B2542F4FB00E92BDC /* Products */,
 				C6ECDCC516098E9341C98BFF /* Pods */,
@@ -82,14 +118,11 @@
 		8778D49C2542F4FB00E92BDC /* musicalscalechecker */ = {
 			isa = PBXGroup;
 			children = (
+				8778D4CB2542F68500E92BDC /* InfoPlist.strings */,
+				8715422026A5EA9900543F8A /* Model */,
+				8715421E26A5EA8400543F8A /* View */,
+				8715421F26A5EA9100543F8A /* ViewModel */,
 				870CB6B6254319E400E84DD4 /* Settings.bundle */,
-				8778D49D2542F4FB00E92BDC /* AppDelegate.swift */,
-				8778D49F2542F4FB00E92BDC /* SceneDelegate.swift */,
-				8778D4A12542F4FB00E92BDC /* ContentView.swift */,
-				87939D6D256D634300E99458 /* SettingView.swift */,
-				8778D4C02542F64600E92BDC /* ChartView.swift */,
-				8778D4C32542F65600E92BDC /* ColorEx.swift */,
-				8778D4D22542FF0200E92BDC /* AdView.swift */,
 				8778D4BF2542F63500E92BDC /* komorebi-gothic.ttf */,
 				8778D4A32542F4FD00E92BDC /* Assets.xcassets */,
 				8758A145269DC9F600EFECF6 /* Info.plist */,
@@ -248,11 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8715422426A5F02800543F8A /* UserDataModel.swift in Sources */,
 				8778D49E2542F4FB00E92BDC /* AppDelegate.swift in Sources */,
+				8715422226A5ECD400543F8A /* TunerViewModel.swift in Sources */,
 				8778D4C42542F65600E92BDC /* ColorEx.swift in Sources */,
 				8778D4A02542F4FB00E92BDC /* SceneDelegate.swift in Sources */,
 				87939D6E256D634300E99458 /* SettingView.swift in Sources */,
 				8778D4D32542FF0200E92BDC /* AdView.swift in Sources */,
+				870ACC7026AA9A240065A532 /* SoundModel.swift in Sources */,
 				8778D4A22542F4FB00E92BDC /* ContentView.swift in Sources */,
 				8778D4C12542F64600E92BDC /* ChartView.swift in Sources */,
 			);

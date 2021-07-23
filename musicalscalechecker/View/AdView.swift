@@ -11,7 +11,7 @@ import GoogleMobileAds
 struct AdView: UIViewRepresentable {
     func makeUIView(context: Context) -> GADBannerView {
         let banner = GADBannerView()
-        //banner.adUnitID = "ca-app-pub-3940256099942544/2934735716" //テスト
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716" //テスト
         banner.rootViewController = UIApplication.shared.windows.first?.rootViewController
         banner.load(GADRequest())
         return banner
@@ -24,7 +24,7 @@ struct AdView: UIViewRepresentable {
 struct AdRectView: UIViewRepresentable {
     func makeUIView(context: Context) -> GADBannerView {
         let banner = GADBannerView()
-        //banner.adUnitID = "ca-app-pub-3940256099942544/2934735716" //テスト
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716" //テスト
         banner.rootViewController = UIApplication.shared.windows.first?.rootViewController
         banner.load(GADRequest())
         return banner
