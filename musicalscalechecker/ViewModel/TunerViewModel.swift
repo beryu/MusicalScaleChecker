@@ -14,16 +14,7 @@ class TunerViewModel: ObservableObject {
     var tracker: PitchTap!
     var silence: Fader
     
-    let noteFrequencies:[Float] = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
-    var noteNames:[String] = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
-    var scaleNames:[String] = ["ド", "ド#", "レ", "レ#", "ミ", "ファ", "ファ#", "ソ", "ソ#", "ラ", "ラ#", "シ"]
-    
-    @Published var frequency:Float = 0
-    @Published var freq:Float = 0
-    
-    @Published var pitch:String = "--"
-    @Published var note:String = "--"
-    @Published var noteJa:String = "--"
+    @Published var sound = SoundModel()
     
     let maxSense:Float = 1.0
     
@@ -31,7 +22,7 @@ class TunerViewModel: ObservableObject {
     @Published var reload:Bool = false
     @Published var userData = UserDataModel() {
         didSet {
-            changeSharpFlat()
+            sound.changeSharpFlat(isFlat: userData.isFlat)
             if !isStopped {
                 /// timerIntervalが変更された場合、リスタートして表示間隔を更新する
                 start()
@@ -51,32 +42,22 @@ class TunerViewModel: ObservableObject {
     
     //@Published var rewarded:GADRewardedAd
     @Published var isAdHidden: Bool
-    
-    func changeSharpFlat(){
-        if(userData.isFlat){
-            noteNames = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
-            scaleNames = ["ド", "レ♭", "レ", "ミ♭", "ミ", "ファ", "ソ♭", "ソ", "ラ♭", "ラ", "シ♭", "シ"]
-        }else{
-            noteNames = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
-            scaleNames = ["ド", "ド#", "レ", "レ#", "ミ", "ファ", "ファ#", "ソ", "ソ#", "ラ", "ラ#", "シ"]
-        }
-    }
 
     func update(_ frequency: Float, _ amp: Float) {
         var frequency_calc = frequency
         if maxSense * userData.slider/100.0 < amp && frequency_calc < 20000{
-            freq = frequency
-            while frequency_calc > Float(noteFrequencies[noteFrequencies.count - 1]) {   //noteFrequenciesの値までオクターブを下げていく
+            sound.frequency = frequency
+            while frequency_calc > Float(sound.noteFrequencies[sound.noteFrequencies.count - 1]) {   //noteFrequenciesの値までオクターブを下げていく
                 frequency_calc /= 2.0
             }
-            while frequency_calc < Float(noteFrequencies[0]) {   //noteFrequenciesの値までオクターブを上げる
+            while frequency_calc < Float(sound.noteFrequencies[0]) {   //noteFrequenciesの値までオクターブを上げる
                 frequency_calc *= 2.0
             }
             /* ドとレを行き来する問題
              　ドの方が近ければ/2する
             */
-            if(frequency_calc > Float(noteFrequencies[noteFrequencies.count - 1])){
-                if(fabsf(Float(noteFrequencies[noteFrequencies.count - 1]) - frequency_calc) > fabsf(Float(noteFrequencies[0]) - frequency/2.0)){
+            if(frequency_calc > Float(sound.noteFrequencies[sound.noteFrequencies.count - 1])){
+                if(fabsf(Float(sound.noteFrequencies[sound.noteFrequencies.count - 1]) - frequency_calc) > fabsf(Float(sound.noteFrequencies[0]) - frequency/2.0)){
                     frequency_calc /= 2.0
                 }
             }
@@ -84,8 +65,8 @@ class TunerViewModel: ObservableObject {
             var minDistance: Float = 10_000.0   //間の距離
             var index:Int = 0
 
-            for i in 0..<noteFrequencies.count {
-                let distance:Float = fabsf(Float(noteFrequencies[i]) - frequency_calc)   //各音程までの距離の絶対値
+            for i in 0..<sound.noteFrequencies.count {
+                let distance:Float = fabsf(Float(sound.noteFrequencies[i]) - frequency_calc)   //各音程までの距離の絶対値
                 if distance < minDistance { //一番小さい距離のものを記憶
                     index = i
                     minDistance = distance
@@ -115,16 +96,16 @@ class TunerViewModel: ObservableObject {
                 }
             }
             
-            let note = noteNames[index] + octave.description
+            let note = sound.noteNames[index] + octave.description
             
-            self.pitch = note
-            self.note = prefix + noteNames[index]
-            self.noteJa = scaleNames[index]
+            sound.pitch = note
+            sound.note = prefix + sound.noteNames[index]
+            sound.noteJa = sound.scaleNames[index]
         } else {
-            freq = 0
-            self.pitch = "--"
-            self.note = "--"
-            self.noteJa = "--"
+            sound.frequency = 0
+            sound.pitch = "--"
+            sound.note = "--"
+            sound.noteJa = "--"
         }
     }
 
@@ -168,7 +149,7 @@ class TunerViewModel: ObservableObject {
             }
         }
         
-        changeSharpFlat()
+        sound.changeSharpFlat(isFlat: userData.isFlat)
     }
     
     func start() {
@@ -182,7 +163,6 @@ class TunerViewModel: ObservableObject {
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(userData.timerInterval), repeats: true) {_ in
             if(!self.isStopped){
-                self.frequency = self.freq
                 self.reload.toggle()
             }
        }

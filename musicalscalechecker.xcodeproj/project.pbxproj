@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		870ACC7026AA9A240065A532 /* SoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870ACC6F26AA9A240065A532 /* SoundModel.swift */; };
 		870CB6B7254319E400E84DD4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 870CB6B6254319E400E84DD4 /* Settings.bundle */; };
 		8715422226A5ECD400543F8A /* TunerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715422126A5ECD400543F8A /* TunerViewModel.swift */; };
 		8715422426A5F02800543F8A /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715422326A5F02800543F8A /* UserDataModel.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		127CB2329A5405303F12FE43 /* Pods-musicalscalechecker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-musicalscalechecker.release.xcconfig"; path = "Target Support Files/Pods-musicalscalechecker/Pods-musicalscalechecker.release.xcconfig"; sourceTree = "<group>"; };
+		870ACC6F26AA9A240065A532 /* SoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundModel.swift; sourceTree = "<group>"; };
 		870CB6B6254319E400E84DD4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8715422126A5ECD400543F8A /* TunerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerViewModel.swift; sourceTree = "<group>"; };
 		8715422326A5F02800543F8A /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				8715422326A5F02800543F8A /* UserDataModel.swift */,
+				870ACC6F26AA9A240065A532 /* SoundModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				8778D4A02542F4FB00E92BDC /* SceneDelegate.swift in Sources */,
 				87939D6E256D634300E99458 /* SettingView.swift in Sources */,
 				8778D4D32542FF0200E92BDC /* AdView.swift in Sources */,
+				870ACC7026AA9A240065A532 /* SoundModel.swift in Sources */,
 				8778D4A22542F4FB00E92BDC /* ContentView.swift in Sources */,
 				8778D4C12542F64600E92BDC /* ChartView.swift in Sources */,
 			);

@@ -68,19 +68,19 @@ struct ContentView: View {
                             .offset(x: -100, y: 100)
                         }
                         VStack{
-                            Text("\(conductor.pitch)")
+                            Text("\(conductor.sound.pitch)")
                                 .font(.custom("komorebi-gothic", size: 20))
                                 .foregroundColor(Color(hex: "D9D9D9"))
                                 .padding(5)
-                            Text("\(conductor.note)")
+                            Text("\(conductor.sound.note)")
                                 .font(.custom("komorebi-gothic", size: 20))
                                 .foregroundColor(Color(hex: "D9D9D9"))
                                 .padding(5)
-                            Text("\(conductor.noteJa)")
+                            Text("\(conductor.sound.noteJa)")
                                 .font(.custom("komorebi-gothic", size: 100))
                                 .foregroundColor(Color(hex: "D9D9D9"))
                                 .padding(5)
-                            Text("\(Int(conductor.frequency), specifier: "%4d")Hz")
+                            Text("\(Int(conductor.sound.frequency), specifier: "%4d")Hz")
                                 .font(.custom("komorebi-gothic", size: 20))
                                 .foregroundColor(Color(hex: "D9D9D9"))
                                 .padding(5)
@@ -91,7 +91,7 @@ struct ContentView: View {
                         }
                     }
                     .padding(.top)
-                    ChartView(freq: conductor.frequency, reload: conductor.reload, isFlat: conductor.userData.isFlat)
+                    ChartView(freq: conductor.sound.frequency, reload: conductor.reload, isFlat: conductor.userData.isFlat)
                         .padding(.top)
                     if !conductor.isAdHidden {
                         if UIDevice.current.userInterfaceIdiom == .pad {
