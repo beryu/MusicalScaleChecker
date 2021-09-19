@@ -31,9 +31,9 @@ struct UserDataModel {
     }
     
     init() {
-        UserDefaults.standard.register(defaults: [isFlatKey : false,
-                                                  sliderKey : 0,
-                                                  timerIntervalKey : 0.005])
+        UserDefaults.standard.register(defaults: [isFlatKey: false,
+                                                  sliderKey: 0,
+                                                  timerIntervalKey: 0.005])
         
         isFlat = UserDefaults.standard.bool(forKey: isFlatKey)
         slider = UserDefaults.standard.float(forKey: sliderKey)

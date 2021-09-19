@@ -7,3 +7,4 @@
 */
 CFBundleDisplayName = "音程チェッカー";
 NSMicrophoneUsageDescription = "マイクからの音を取得し、音程や周波数を解析するために使用します";
+NSUserTrackingUsageDescription = "このアプリは、広告の収益によって運営しております。[許可] をタップすると、より関連性の高い広告が表示されるようになります。";

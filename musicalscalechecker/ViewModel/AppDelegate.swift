@@ -7,14 +7,19 @@
 
 import UIKit
 import GoogleMobileAds
+import AppTrackingTransparency
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
-
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                GADMobileAds.sharedInstance().start(completionHandler: nil)
+            })
+        } else {
+            GADMobileAds.sharedInstance().start(completionHandler: nil)
+        }
         return true
     }
 
@@ -32,6 +37,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
 }
-
