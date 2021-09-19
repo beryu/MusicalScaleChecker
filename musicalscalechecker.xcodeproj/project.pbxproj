@@ -24,6 +24,7 @@
 		8778D4D02542F6F400E92BDC /* komorebi-gothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8778D4BF2542F63500E92BDC /* komorebi-gothic.ttf */; };
 		8778D4D32542FF0200E92BDC /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778D4D22542FF0200E92BDC /* AdView.swift */; };
 		87939D6E256D634300E99458 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87939D6D256D634300E99458 /* SettingView.swift */; };
+		87D1F49E26F7554C0061C47C /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D1F49D26F7554C0061C47C /* AppTrackingTransparency.framework */; };
 		EB75BE0ABD78C26A2AB4C2D8 /* Pods_musicalscalechecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E891230360C73922F722B9 /* Pods_musicalscalechecker.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		8778D4CE2542F69300E92BDC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8778D4D22542FF0200E92BDC /* AdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
 		87939D6D256D634300E99458 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		87D1F49D26F7554C0061C47C /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		D14D05E59E5BDAAB4A0F1167 /* Pods-musicalscalechecker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-musicalscalechecker.debug.xcconfig"; path = "Target Support Files/Pods-musicalscalechecker/Pods-musicalscalechecker.debug.xcconfig"; sourceTree = "<group>"; };
 		E9E891230360C73922F722B9 /* Pods_musicalscalechecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_musicalscalechecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87D1F49E26F7554C0061C47C /* AppTrackingTransparency.framework in Frameworks */,
 				8778D4B42542F5BD00E92BDC /* AudioKit in Frameworks */,
 				EB75BE0ABD78C26A2AB4C2D8 /* Pods_musicalscalechecker.framework in Frameworks */,
 			);
@@ -143,6 +146,7 @@
 		9F738F8CA395247D17372905 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				87D1F49D26F7554C0061C47C /* AppTrackingTransparency.framework */,
 				E9E891230360C73922F722B9 /* Pods_musicalscalechecker.framework */,
 			);
 			name = Frameworks;

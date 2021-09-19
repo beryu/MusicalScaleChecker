@@ -7,3 +7,4 @@
 */
 CFBundleDisplayName = "MusicalScale";
 NSMicrophoneUsageDescription = "To analyze notes and frequencies from your microphone";
+NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
